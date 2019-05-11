@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://flight_booker/flight_booker.gd" type="Script" id=1]
+
+[node name="FlightBooker" type="VBoxContainer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -68.0
+margin_top = -59.0
+margin_right = 68.0
+margin_bottom = 59.0
+custom_constants/separation = 10
+script = ExtResource( 1 )
+
+[node name="FlightMode" type="OptionButton" parent="."]
+margin_right = 136.0
+margin_bottom = 20.0
+text = "one-way flight"
+items = [ "one-way flight", null, false, 0, null, "return flight", null, false, 1, null ]
+selected = 0
+
+[node name="StartDate" type="LineEdit" parent="."]
+margin_top = 30.0
+margin_right = 136.0
+margin_bottom = 54.0
+text = "2019.05.11"
+
+[node name="EndDate" type="LineEdit" parent="."]
+margin_top = 64.0
+margin_right = 136.0
+margin_bottom = 88.0
+text = "2019.05.11"
+editable = false
+
+[node name="Book" type="Button" parent="."]
+margin_top = 98.0
+margin_right = 136.0
+margin_bottom = 118.0
+text = "Book"
+[connection signal="item_selected" from="FlightMode" to="." method="_on_flight_mode_selected"]
+[connection signal="text_changed" from="StartDate" to="." method="_on_start_date_changed"]
+[connection signal="text_changed" from="EndDate" to="." method="_on_end_date_changed"]
+[connection signal="pressed" from="Book" to="." method="_on_book_button_pressed"]
