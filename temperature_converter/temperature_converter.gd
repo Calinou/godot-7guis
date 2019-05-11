@@ -3,8 +3,8 @@
 
 extends HBoxContainer
 
-onready var celsius_line_edit := $CelsiusLineEdit as LineEdit
-onready var fahrenheit_line_edit := $FahrenheitLineEdit as LineEdit
+onready var celsius_field := $CelsiusLineEdit as LineEdit
+onready var fahrenheit_field := $FahrenheitLineEdit as LineEdit
 
 var celsius := 0.0 setget set_celsius
 var fahrenheit := 32.0 setget set_fahrenheit
@@ -17,21 +17,21 @@ func _on_celsius_text_changed(new_text: String) -> void:
 
 	# Empty the other field if this field is empty
 	if new_text == "":
-		fahrenheit_line_edit.text = ""
+		fahrenheit_field.text = ""
 
 func _on_fahrenheit_text_changed(new_text: String) -> void:
 	self.fahrenheit = float(new_text)
 
 	# Empty the other field if this field is empty
 	if new_text == "":
-		celsius_line_edit.text = ""
+		celsius_field.text = ""
 
 func set_celsius(p_celsius: float) -> void:
 	fahrenheit = p_celsius * 1.8 + 32
-	fahrenheit_line_edit.text = str(fahrenheit)
+	fahrenheit_field.text = str(fahrenheit)
 	celsius = p_celsius
 
 func set_fahrenheit(p_fahrenheit: float) -> void:
 	celsius = (p_fahrenheit - 32) / 1.8
-	celsius_line_edit.text = str(celsius)
+	celsius_field.text = str(celsius)
 	fahrenheit = p_fahrenheit
